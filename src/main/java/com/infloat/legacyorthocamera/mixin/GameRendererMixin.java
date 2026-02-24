@@ -13,11 +13,12 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class GameRendererMixin {
 
     @Redirect(
-            method = "renderClouds",
+            method = "renderClouds(Lnet/minecraft/client/render/WorldRenderer;FI)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/client/render/WorldRenderer;renderClouds(FI)V"
-            )
+            ),
+            require = 0
     )
     private void hideCloudsInOrtho(WorldRenderer worldRenderer, float tickDelta, int anaglyphFilter) {
         if (!LegacyOrthoCamera.isEnabled() || !LegacyOrthoCamera.CONFIG.hide_clouds_in_ortho) {
@@ -26,11 +27,18 @@ public abstract class GameRendererMixin {
     }
 
     @Redirect(
-            method = {"setupCamera", "renderHand", "renderWorld", "renderClouds"},
+            method = {
+                    "setupCamera(FI)V",
+                    "renderHand(FI)V",
+                    "renderWorld(IFJ)V",
+                    "renderWorld(FJ)V",
+                    "renderClouds(Lnet/minecraft/client/render/WorldRenderer;FI)V"
+            },
             at = @At(
                     value = "INVOKE",
                     target = "Lorg/lwjgl/util/glu/Project;gluPerspective(FFFF)V"
-            )
+            ),
+            require = 0
     )
     private void redirectPerspective(float fov, float aspect, float near, float far) {
         if (LegacyOrthoCamera.isEnabled()) {
@@ -41,11 +49,12 @@ public abstract class GameRendererMixin {
     }
 
     @Redirect(
-            method = "transformCamera",
+            method = "transformCamera(F)V",
             at = @At(
                     value = "FIELD",
                     target = "Lnet/minecraft/entity/Entity;yaw:F"
-            )
+            ),
+            require = 0
     )
     private float redirectYaw(Entity entity, float tickDelta) {
         if (isFixedOrthoEnabled()) {
@@ -55,11 +64,12 @@ public abstract class GameRendererMixin {
     }
 
     @Redirect(
-            method = "transformCamera",
+            method = "transformCamera(F)V",
             at = @At(
                     value = "FIELD",
                     target = "Lnet/minecraft/entity/Entity;prevYaw:F"
-            )
+            ),
+            require = 0
     )
     private float redirectPrevYaw(Entity entity, float tickDelta) {
         if (isFixedOrthoEnabled()) {
@@ -69,11 +79,12 @@ public abstract class GameRendererMixin {
     }
 
     @Redirect(
-            method = "transformCamera",
+            method = "transformCamera(F)V",
             at = @At(
                     value = "FIELD",
                     target = "Lnet/minecraft/entity/Entity;pitch:F"
-            )
+            ),
+            require = 0
     )
     private float redirectPitch(Entity entity, float tickDelta) {
         if (isFixedOrthoEnabled()) {
@@ -83,11 +94,12 @@ public abstract class GameRendererMixin {
     }
 
     @Redirect(
-            method = "transformCamera",
+            method = "transformCamera(F)V",
             at = @At(
                     value = "FIELD",
                     target = "Lnet/minecraft/entity/Entity;prevPitch:F"
-            )
+            ),
+            require = 0
     )
     private float redirectPrevPitch(Entity entity, float tickDelta) {
         if (isFixedOrthoEnabled()) {

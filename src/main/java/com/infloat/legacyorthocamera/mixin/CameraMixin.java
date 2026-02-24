@@ -10,26 +10,28 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 public abstract class CameraMixin {
 
     @ModifyArg(
-            method = "transformCamera",
+            method = "transformCamera(F)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lcom/mojang/blaze3d/platform/GlStateManager;translate(FFF)V",
                     ordinal = 2
             ),
-            index = 0
+            index = 0,
+            require = 0
     )
     private float moveByHeadX(float value) {
         return LegacyOrthoCamera.isEnabled() ? 0.0F : value;
     }
 
     @ModifyArg(
-            method = "transformCamera",
+            method = "transformCamera(F)V",
             at = @At(
                     value = "INVOKE",
                     target = "Lcom/mojang/blaze3d/platform/GlStateManager;translate(FFF)V",
                     ordinal = 2
             ),
-            index = 2
+            index = 2,
+            require = 0
     )
     private float moveByHeadZ(float value) {
         return LegacyOrthoCamera.isEnabled() ? 0.0F : value;

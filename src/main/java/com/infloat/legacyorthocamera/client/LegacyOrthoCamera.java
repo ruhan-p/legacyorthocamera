@@ -62,11 +62,11 @@ public class LegacyOrthoCamera implements ClientModInitializer {
 
         if (CONFIG.enabled) {
             if (SCALE_INCREASE_KEY.isPressed() && !SCALE_DECREASE_KEY.isPressed()) {
-                CONFIG.setScaleX(CONFIG.scale_x + SCALE_STEP_PER_TICK);
-                CONFIG.setScaleY(CONFIG.scale_y + SCALE_STEP_PER_TICK);
-            } else if (SCALE_DECREASE_KEY.isPressed() && !SCALE_INCREASE_KEY.isPressed()) {
                 CONFIG.setScaleX(CONFIG.scale_x - SCALE_STEP_PER_TICK);
                 CONFIG.setScaleY(CONFIG.scale_y - SCALE_STEP_PER_TICK);
+            } else if (SCALE_DECREASE_KEY.isPressed() && !SCALE_INCREASE_KEY.isPressed()) {
+                CONFIG.setScaleX(CONFIG.scale_x + SCALE_STEP_PER_TICK);
+                CONFIG.setScaleY(CONFIG.scale_y + SCALE_STEP_PER_TICK);
             }
         }
 
