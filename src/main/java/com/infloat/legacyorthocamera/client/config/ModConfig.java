@@ -137,6 +137,10 @@ public class ModConfig extends JsonConfig {
         setDirty(true);
     }
 
+    public void toggleFixed() {
+        setFixed(!fixed);
+    }
+
     public void toggle() {
         enabled = !enabled;
         if (auto_third_person) {

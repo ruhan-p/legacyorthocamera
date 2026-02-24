@@ -21,6 +21,7 @@ public class LegacyOrthoCamera implements ClientModInitializer {
     private static final String KEY_CATEGORY = "orthocamera.category";
     private static final KeyBinding TOGGLE_KEY = createKeybinding("toggle", Keyboard.KEY_NUMPAD4);
     private static final KeyBinding OPEN_CONFIG_KEY = createKeybinding("open_config", Keyboard.KEY_NUMPAD5);
+    private static final KeyBinding TOGGLE_FIXED_CAMERA_KEY = createKeybinding("toggle_fixed_camera", Keyboard.KEY_NUMPAD6);
     private static final KeyBinding SCALE_INCREASE_KEY = createKeybinding("scale_increase", Keyboard.KEY_EQUALS);
     private static final KeyBinding SCALE_DECREASE_KEY = createKeybinding("scale_decrease", Keyboard.KEY_MINUS);
     private static final KeyBinding FIXED_CAMERA_ROTATE_UP_KEY = createKeybinding("fixed_camera_up", Keyboard.KEY_NONE);
@@ -38,6 +39,7 @@ public class LegacyOrthoCamera implements ClientModInitializer {
         CONFIG.enabled &= CONFIG.save_enabled_state;
         KeyBindingHelper.registerKeyBinding(TOGGLE_KEY);
         KeyBindingHelper.registerKeyBinding(OPEN_CONFIG_KEY);
+        KeyBindingHelper.registerKeyBinding(TOGGLE_FIXED_CAMERA_KEY);
         KeyBindingHelper.registerKeyBinding(SCALE_INCREASE_KEY);
         KeyBindingHelper.registerKeyBinding(SCALE_DECREASE_KEY);
         KeyBindingHelper.registerKeyBinding(FIXED_CAMERA_ROTATE_UP_KEY);
@@ -57,6 +59,12 @@ public class LegacyOrthoCamera implements ClientModInitializer {
         while (OPEN_CONFIG_KEY.wasPressed()) {
             if (!(client.currentScreen instanceof ModConfigScreen)) {
                 client.setScreen(new ModConfigScreen(client.currentScreen));
+            }
+        }
+
+        while (TOGGLE_FIXED_CAMERA_KEY.wasPressed()) {
+            if (CONFIG.enabled) {
+                CONFIG.toggleFixed();
             }
         }
 

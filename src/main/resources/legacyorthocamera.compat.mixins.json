@@ -1,0 +1,13 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "com.infloat.legacyorthocamera.mixin.compat",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "AxolotlCrosshairHudMixin",
+    "AxolotlFreelookMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}
