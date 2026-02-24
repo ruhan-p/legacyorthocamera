@@ -1,6 +1,7 @@
 # Legacy OrthoCamera
-A port of DimasKama's OrthoCamera to 1.8.9
-Provides an alternative camera view to visualize large areas
+A port of DimasKama's OrthoCamera to 1.8.9.
+
+Provides an alternative camera view to visualize large areas.
 
 ## Original Mod
 For more details, review the original mod's page. Many of the features presented there are also present in this port:
