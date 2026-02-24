@@ -8,6 +8,8 @@ public class ModConfig extends JsonConfig {
 
     public static final float MIN_SCALE = 0.01F;
     public static final float MAX_SCALE = 10000.0F;
+    public static final float MIN_DISTANCE_LIMIT = -100000.0F;
+    public static final float MAX_DISTANCE_LIMIT = 100000.0F;
     private static final int THIRD_PERSON_BACK = 1;
 
     private transient boolean dirty;
@@ -99,6 +101,24 @@ public class ModConfig extends JsonConfig {
         pitch = MathHelper.clamp(pitch, -90.0F, 90.0F);
         if (pitch != fixed_pitch) {
             fixed_pitch = pitch;
+            setDirty(true);
+        }
+    }
+
+    public void setMinDistance(float distance) {
+        float clamped = MathHelper.clamp(distance, MIN_DISTANCE_LIMIT, MAX_DISTANCE_LIMIT);
+        clamped = Math.min(clamped, max_distance - 1.0F);
+        if (clamped != min_distance) {
+            min_distance = clamped;
+            setDirty(true);
+        }
+    }
+
+    public void setMaxDistance(float distance) {
+        float clamped = MathHelper.clamp(distance, MIN_DISTANCE_LIMIT, MAX_DISTANCE_LIMIT);
+        clamped = Math.max(clamped, min_distance + 1.0F);
+        if (clamped != max_distance) {
+            max_distance = clamped;
             setDirty(true);
         }
     }
