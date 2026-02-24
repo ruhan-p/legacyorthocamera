@@ -1,32 +1,30 @@
 {
   "schemaVersion": 1,
-  "id": "legacymousetweaks",
+  "id": "legacyorthocamera",
   "version": "${version}",
-  "name": "Legacy Mouse Teaks",
-  "description": "A port of YaLTeR's Mouse Tweaks to 1.8.9",
+  "name": "Legacy OrthoCamera",
+  "description": "A port of DimasKama's OrthoCamera to 1.8.9",
   "authors": [
     "infloat"
   ],
   "contact": {
-    "homepage": "https://legacyfabric.net/",
-    "sources": "https://github.com/Legacy-Fabric/fabric-example-mod"
+    "sources": "https://github.com/ruhan-p/legacyorthocamera"
   },
   "license": "CC0-1.0",
-  "icon": "assets/legacymousetweaks/icon.png",
+  "icon": "assets/legacyorthocamera/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "com.infloat.legacymousetweaks.LegacyMouseTweaks"
+    "client": [
+      "com.infloat.legacyorthocamera.client.LegacyOrthoCamera"
     ],
     "modmenu": [
-      "com.infloat.legacymousetweaks.client.LegacyMouseTweaksModMenuApi"
     ]
   },
   "custom": {
     "modmenu:api": true
   },
   "mixins": [
-    "legacymousetweaks.mixins.json"
+    "legacyorthocamera.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.16.0",

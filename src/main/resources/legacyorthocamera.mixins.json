@@ -1,12 +1,15 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.infloat.legacymousetweaks.mixin",
+  "package": "com.infloat.legacyorthocamera.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],
   "client": [
-    "GuiContainerMixin"
+    "GameRendererMixin",
+    "CameraMixin",
+    "WorldBorderRenderingMixin",
+    "InGameHudMixin"
   ],
   "injectors": {
     "defaultRequire": 1
