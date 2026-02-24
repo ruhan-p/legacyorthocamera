@@ -3,6 +3,9 @@ A port of DimasKama's OrthoCamera to 1.8.9.
 
 Provides an alternative camera view to visualize large areas.
 
+## Latest Version: 1.0.1
+1. Improved compatibility with AxolotlClient
+
 ## Original Mod
 For more details, review the original mod's page. Many of the features presented there are also present in this port:
 
